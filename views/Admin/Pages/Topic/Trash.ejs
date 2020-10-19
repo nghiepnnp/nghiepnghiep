@@ -1,0 +1,91 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <%= title %>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Topic</a></li>
+                    <li class="breadcrumb-item active">Thùng rác</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <%- include("../../Partials/Flash") %>
+                    </div>
+                    <div class="col-6">
+                        <div class="float-right">
+
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <a href="admin/topic" class="text-white"><i class="fas fa-sign-out-alt fa-xs"></i>&nbsp; Thoát</a> 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <table id="cate1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center no-sort" style="width:3rem;">ID</th>
+                            <th class="no-sort"> Tên chủ đề </th>
+                            <th class="no-sort">Liên kết</th>
+                            <th>Cấp cha</th>
+                            <th class="no-sort">Ngày xóa</th>
+                            <th class="no-sort text-center" style="width:10rem">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach(function(cat){%>
+                            <tr>
+                                <td class="text-center">
+                                    <%= cat.ID%>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <%= cat.Name%>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="">
+                                        <%= cat.Slug%>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%= cat.ParentID%>
+                                </td>
+                                <td>
+                                    <%= format_datetime(cat.Updated_at) %>
+                                </td>
+                                <td class="text-center">
+
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Khôi phục">
+                                    <a href="admin/topic/undo?id=<%= cat.ID%>" class="text-white"><i class="fas fa-undo-alt"></i></a>
+                                </button>
+
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Xóa vĩnh viễn">
+                                    <a href="admin/topic/deleterd?id=<%= cat.ID%>" class="text-white"><i class="far fa-trash-alt"></i></a>
+                                </button>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

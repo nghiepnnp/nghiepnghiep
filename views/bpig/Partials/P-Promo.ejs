@@ -1,0 +1,42 @@
+<div class="promo-so">
+   
+    <img src="images/desk-1176x50.png" alt="" class="img-title" width="1200">
+    <div class="container-91 taiche">
+        <div id="owl-wrap" class="owl-carousel owl-theme">
+            <%promotion.forEach(function(p){%>
+            <div class="p-item">
+                <a href="<%= p.Slug %>">
+                    <div class="p-img">
+                        <img src="images/Uploads/<%= p.Image %>" alt="" class="beau">
+                        <%if(p.Gop0 == 1){%>
+                        <div class="anw mr-1">Trả góp <span class="font-weight-bold">0%</span></div>
+                        <%}%>
+                        </div>
+                        <div class="couple">
+                            <%if(p.BuyOS == 1){%>
+                        <img src="images/online-giảm-sốc-1x.png" alt="" class="h-100">
+                        <%}%>
+                        </div>
+                        <div class="p-np">
+                            <%= p.Name %>
+                    </div>
+                    <div class="p-price clearfix">
+                        <div class="price">
+                            <%= p.PromotionPrice.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>
+                        </div>
+                        <div class="old-price float-left">
+                            <%= p.Price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>
+                        </div>
+                        <div class="khongbietdattenlagi float-left">
+                            (-<%= ((parseInt(p.Price)-parseInt(p.PromotionPrice))/parseInt(p.Price) * 100).toFixed(0) %>%)
+                        </div>
+                    </div>
+                    <div class="container ml-2">
+                       <small class="text-warning d-inline">4.9/5</small> <small class="fas fa-star text-warning"></small> <small class="text-secondary"> Đánh giá</small>
+                    </div>
+                </a>
+            </div>
+            <%});%>
+        </div>
+    </div>
+</div>

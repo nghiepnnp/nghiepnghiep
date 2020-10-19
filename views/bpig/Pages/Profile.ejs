@@ -1,0 +1,157 @@
+<form method="POST" action="account/update-profile?id=<%= result[0].ID %>">
+  <div style="background:#f5f5f5; min-height:32rem">
+    <div class="container-91 mx-auto">
+      <div class="row">
+        <div class="col-3 mt-5">
+          <div class="">
+            <div class="float-left"><img src="images/boxed-bg.png" ralt="" width="50" class="rounded-circle">
+            </div>
+            <div class="float-left pl-3 border-bottom">
+              <small class="font-weight-bold"> <%= lcAuthUser.Name %></small><br>
+              <small class="text-secondary"> <i class="fas fa-pen fa-sm"></i> Sửa hồ sơ</small>
+            </div>
+          </div>
+          <br>
+          <div style="clear:both"></div>
+          <div class="mt-4 pl-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link  text-secondary" href="account/profile" style="font-size: 14px;"><i
+                    class="far fa-id-card"></i> Thông tin tài khoản</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-secondary" href="account/profile" style="font-size: 14px;"><i
+                    class="far fa-id-card"></i> Sửa thông tin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="account/order" style="font-size: 14px;"><i
+                    class="far fa-file-alt"></i>
+                  &nbsp Đơn mua</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="account/notification" style="font-size: 14px;"><i
+                    class="far fa-bell"></i>&nbsp
+                  Thông báo</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link text-secondary" href="javascript:void(0)" style="font-size: 14px;"><i
+                    class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-9 bg-white mt-3" style="width:50rem; margin-left:-50px">
+          <div class="container-91 border-bottom py-2 mt-3">
+            <h5 lass="text-secondary">Hồ sơ của tôi</h5>
+            <small class="text-secondary">Quản lý thông tin hồ sơ để bảo mật tài khoản</small>
+          </div>
+          <div class="row py-1">
+            <div class="col-8 profile">
+
+              <div class="row my-3">
+                <div class="col-3 text-right my-2">
+                  Họ
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" value="<%= result[0].LastName%>" name="LastName">
+                </div>
+                <div class="col-1 my-2">
+                  Tên
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" value="<%= result[0].Name%>" name="Name">
+                </div>
+
+              </div>
+              <div class="row my-3">
+                <div class="col-3 text-right my-2">
+                  Email
+                </div>
+                <div class="col-9">
+                  <input type="email" class="form-control" value="<%= result[0].Email%>" name="Email">
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-3 text-right my-2">
+                  Số điện thoại
+                </div>
+                <div class="col-9">
+                  <input type="number" class="form-control" value="<%= result[0].Phone%>" name="Phone">
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col-3 text-right my-2">
+                  Giới tính
+                </div>
+                <div class="col-9 my-2">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="1" checked>
+                    <label class="form-check-label">Nam</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="2">
+                    <label class="form-check-label">Nữ</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="3">
+                    <label class="form-check-label">Khác</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-3 text-right my-2">
+                  Ngày sinh
+                </div>
+                <div class="col-3 pr-0">
+                  <select class="form-control">
+                    <% for(var i = 1; i<=31; i++){%>
+                    <option value="<%= i %>"><%= i %></option>
+                    <%}%>
+                  </select>
+                </div>
+                <div class="col-3 px-1">
+                  <select class="form-control">
+                    <% for(var i = 1; i<=12; i++){%>
+                    <option value="<%= i %>">Tháng <%= i %></option>
+                    <%}%>
+                  </select>
+                </div>
+                <div class="col-3 pl-1">
+                  <select class="form-control">
+                    <% for(var i = 2020; i>1900; i--){%>
+                    <option value="<%= i %>"><%= i %></option>
+                    <%}%>
+                  </select>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-3 text-right my-2">
+                 Địa chỉ
+                </div>
+                <div class="col-9 ">
+                  <input type="text" class="form-control" value="<%= result[0].Address %>" name="Address">
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col-4 text-right my-2">
+                  <button type="submit" class="btn btn-danger">Lưu</button>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-3 text-center">
+              <div class="my-5">
+                <img src="images/boxed-bg.png" ralt="" width="100" class="rounded-circle">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</form>

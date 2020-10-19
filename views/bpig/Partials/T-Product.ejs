@@ -1,0 +1,68 @@
+<div class="tab-products">
+    <div class="container-91">
+        <div class="title">Chưa nghĩ ra nên viết gì (^^^)</div>
+        <div class="tab-tab-tab">
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <% tabc.forEach(function(tab, index){%>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link <%if(index === 0){%><%=" active "%><%}%>" data-toggle="pill" href="#tab-<%= tab.ID%>"
+                        role="tab" aria-selected="true">
+                        <%= tab.Name%>
+                    </a>
+                </li>
+                <%})%>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <% tabc.forEach(function(tab, index){%>
+                <div class="tab-pane fade <%if(index === 0){%><%=" show active "%><%}%>" id="tab-<%= tab.ID%>"
+                    role="tabpanel" aria-labelledby="tab-<%= tab.ID%>">
+                    <%allproduct.forEach(function(p, index){%>
+                    <%if(p.Cate_ID == tab.ID){%>
+                    <div class="t-item">
+                        <a href="<%=p.Slug%>">
+                            <div class="t-img">
+                                <img src="images/Uploads/<%= p.Image%>" alt="" class="beau">
+                                <%if(p.Gop0 == 1){%>
+                                <div class="anw mr-1">Trả góp <span class="font-weight-bold">0%</span></div>
+                                <%}%>
+                                        </div>
+                                        <div class="couple">
+                                            <%if(p.BuyOS == 1){%>
+                                <img src="images/online-giảm-sốc-1x.png" alt="" class="h-100">
+                                <%}%>
+                                        </div>
+                                        <div class="t-np">
+                                            <%= p.Name%>
+                            </div>
+                            <div class="t-price clearfix">
+                                <div class="price">
+                                    <%= p.PromotionPrice.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>
+                                </div>
+                                <div class="old-price float-left">
+                                    <%= p.Price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>
+                                </div>
+                                <div class="khongbietdattenlagi float-left">(-
+                                    <%= ((parseInt(p.Price)-parseInt(p.PromotionPrice))/parseInt(p.Price) * 100).toFixed(0) %>
+                                    %)
+                                </div>
+                            </div>
+                            <div class="container ml-1">
+                                <small class="text-warning d-inline">4.9/5</small> <small class="fas fa-star text-warning"></small> <small class="text-secondary"> Đánh giá</small>
+                             </div>
+                        </a>
+                    </div>
+                    <%}})%>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-3" style="background:#f3f3f3">
+    <div class="container-91">
+        <a href=""><img src="images/sliders/stickert5-03-394x75.png" alt="" width=""></a>
+        <a href=""><img src="images/sliders/stickert5-03-394x75.png" alt="" width=""></a>
+        <a href=""><img src="images/sliders/stickert5-03-394x75.png" alt="" width=""></a>
+    </div>
+</div>

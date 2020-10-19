@@ -1,0 +1,31 @@
+{
+    "name": "fourthnodejs",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon ./bin/www"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^19.0.2",
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "bootstrap": "^4.5.0",
+        "ckeditor": "^4.12.1",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.5",
+        "debug": "~2.6.9",
+        "ejs": "~2.6.1",
+        "express": "~4.16.1",
+        "express-session": "^1.17.1",
+        "fs": "0.0.1-security",
+        "http-errors": "~1.6.3",
+        "jdom": "^3.2.1",
+        "jquery": "^3.5.1",
+        "jsdom": "^16.3.0",
+        "morgan": "~1.9.1",
+        "multer": "^1.4.2",
+        "mysql": "^2.18.1",
+        "nodemailer": "^6.4.10",
+        "sweetalert2": "^9.17.0"
+    }
+}

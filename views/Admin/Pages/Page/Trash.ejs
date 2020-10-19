@@ -1,0 +1,82 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <%= title %>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang đơn</a></li>
+                    <li class="breadcrumb-item active">Thùng rác</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <!--Content-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <%- include("../../Partials/Flash") %>
+                    </div>
+                    <div class="col-6">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <a href="admin/page/" class="text-white"><i class="fas fa-sign-out-alt fa-xs"></i>&nbsp; Thoát</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="cate1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center no-sort" style="width:3rem;">ID</th>
+                            <th class=""> Tên trang đơn</th>
+                            <th class="no-sort text-center">Ngày tạo</th>
+                            <th class="no-sort text-center" style="width:10rem">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach(function(top){%>
+                            <tr>
+                                <td class="text-center">
+                                    <%= top.ID%>
+                                </td>
+                                <td class="overflow-hidden" style="max-width: 200px;height:80px">
+                                    <a href="admin/page/detail?id=<%= top.ID%>">
+                                        <%= top.Title %>
+                                    </a>
+                                </td>
+                               
+                                <td>
+                                    <%= format_datetime(top.Created_at) %>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Khôi phục">
+                                        <a href="admin/page/undo?id=<%= top.ID%>" class="text-white"><i class="fas fa-undo-alt"></i></a>
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Xóa vĩnh viễn">
+                                        <a href="admin/page/deleterd?id=<%= top.ID%>" class="text-white"><i class="far fa-trash-alt"></i></a>
+                                    </button>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</section>

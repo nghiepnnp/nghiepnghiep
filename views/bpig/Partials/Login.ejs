@@ -1,0 +1,229 @@
+<%if(!lcIsAuthenticated){%>
+<button type="button" class="button_login" data-toggle="modal" data-target=".bd-example-modal-lg"
+    data-whatever="@getbootstrap" data-backdrop="static" data-keyboard="false">
+    Đăng nhập,
+</button>
+<!--<button type="button" class="button_dangky" data-toggle="modal" data-target="#examplePig">
+    <a href=""> Đăng ký thành viên</a>
+</button>
+-->
+<button type="button" class="button_dangky" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+    data-keyboard="false">
+    Đăng ký thành viên
+</button>
+
+
+
+
+
+<%}else{%>
+<div class="text-light pt-1" style="font-size:12px"> Xin chào,</div>
+<div class="dropdown" style="font-size: 14px;">
+    <a class="text-light font-weight-bold dropdown-toggle" href="accoount/profile" id="navbarDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= lcAuthUser.Name %>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="font-size: 15px;">
+        <%if(lcAuthUser.Access == 1){%>
+        <a class="dropdown-item border-bottom mb-1" href="admin/"><i class="fas fa-caret-right text-secondary"></i>&nbsp
+            Trang
+            quản trị</a>
+        <%}%>
+            <a class="dropdown-item border-bottom my-1" href="account/profile"><i
+                    class="fas fa-caret-right text-secondary"></i>&nbsp Thông
+                tin</a>
+            <a class="dropdown-item border-bottom my-1" href="account/order"><i
+                    class="fas fa-caret-right text-secondary"></i>&nbsp Đơn hàng</a>
+            <a class="dropdown-item" href="account/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+        </div>
+    </div>
+
+<%}%>
+
+
+
+
+
+        <!-- Modal Resoksdj-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog" role="document" style="min-width:720px;">
+                <div class="modal-content">
+                    <div class="modal-header" style="background:#4a90e2">
+                        <h5 class="modal-title text-light" id="exampleModalLabel"><i class="fas fa-user-plus"></i>
+                            Đăng ký tài khoản
+                        </h5>
+                        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row  mx-1">
+                            <div class="col-7">
+                                <form method="POST">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="text-muted mini-s-c pl-2">Tên</label>
+                                            <input type="text" class="form-control ten" placeholder="" value="" required
+                                                name="ten">
+                                            <div class="invalid-feedback">
+                                                Tên không được trống
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="text-muted mini-s-c pl-2">Họ</label>
+                                            <input type="text" class="form-control ho" placeholder="" value="" required
+                                                name="ho">
+                                            <div class="invalid-feedback">
+                                                Họ không được trống
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label class="text-muted mini-s-c pl-2">Số điện thoại</label>
+                                            <input type="number" class="form-control valiphone" id="valiphone"
+                                                placeholder="" required name="phone">
+                                            <div class="invalid-feedback invalid-feedback-valiphone">
+                                                Số điện thoại đã được đăng ký
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label class="mini-s-c text-muted pl-2">Mật khẩu</label>
+                                            <input type="password" class="form-control pass-res" placeholder="" required
+                                                name="pass">
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label class="mini-s-c text-muted pl-2">Xác nhận lại mật khẩu</label>
+                                            <input type="password" class="form-control pl-2  repass-res" placeholder=""
+                                                required name="repass">
+                                            <div class="invalid-feedback">
+                                                <!--is-invalid-->
+                                                Mật khẩu không khớp. Hãy thử lại.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck3"
+                                                required checked>
+                                            <label class="form-check-label mini-s-c" for="invalidCheck3">
+                                                Tôi đồng ý với các điều khoản dịch vụ
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary mini-s-c" id="btn_register" type="submit">Đăng
+                                        ký</button>
+                                </form>
+                            </div>
+                            <div class="col-5">
+                                <img src="images/account.svg" alt="E" width="200" class="d-block m-auto pt-5">
+                                <div style="font-size:14px; opacity: .7;" class="text-center">Một tài khoản. Hoạt động
+                                    trên mọi sản phẩm và dịch vụ của phuongnghiep.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row clearfix mx-4 mt-1 mb-3">
+                        <div class="col-6" style="color:#4a90e2; font-size: 12px;">
+                            <button data-toggle="modal" data-target=".bd-example-modal-lg"  data-whatever="@getbootstrap" class="dn-lg text-primary"
+                                style="border:0; background:#fff">
+                                Đăng nhập
+                            </button>
+                            | <a href="">Quên mật khẩu </a>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-2" style="margin-top:-10px">
+                            <button type="button" class=" px-4 btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Modal Login-->
+        <div class="modal fade bd-example-modal-lg" id="exampleModal1" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background:#4a90e2">
+                        <h5 class="modal-title text-light" id="exampleModalLabel"><i class="fas fa-sign-in-alt"></i>
+                            Đăng nhập
+                        </h5>
+                        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="row mx-3">
+                        <div class="col-6">
+                            <div class="modal-header pl-0">
+                                <div class="modal-title">BẰNG TÀI KHOẢN ĐÃ ĐĂNG KÝ
+                                </div>
+                            </div>
+                            <div class="py-3">
+                                <!--  <form method="POST" id="form_login">-->
+                                <form action="account/login" method="POST" id="form_login">
+                                    <div class="form-group">
+                                        <label style="font-size: 13px;">Tài khoản</label>
+                                        <input type="text" class="form-control" aria-describedby="emailHelp"
+                                            placeholder="" name="Name" value="3">
+                                        <small id="nameHelp" class="pl-1 form-text text-danger"></small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="font-size: 13px;">Mật khẩu</label>
+                                        <input type="password" class="form-control" placeholder="" name="Password" value="1">
+                                        <small id="passHelp" class="pl-1 form-text text-danger"></small>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <button type="submit" id="btn_submit"
+                                                class="btn btn-primary mt-1 float-left  mb-3">
+                                                Đăng nhập
+                                            </button>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="form-check float-right pt-2">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" style="font-size: 13px;">
+                                                    Lưu mật khẩu
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="col-5">
+                            <div class="modal-header">
+                                <div class="modal-title" id="exampleModalLabel">BẰNG TÀI KHOẢN KHÁC
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row clearfix mx-4 mt-2 mb-3">
+                        <div class="col-6" style="color:#4a90e2; font-size: 12px;">
+                            <button data-toggle="modal" data-target="#exampleModal" class="dk-lg text-primary"
+                                style="border:0; background:#fff">
+                                Đăng ký
+                            </button>
+                            | <a href="">Quên mật khẩu </a>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-2" style="margin-top:-15px">
+                            <button type="button" class="text-center rounded-0 py-1 px-4 btn btn-dark"
+                                data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

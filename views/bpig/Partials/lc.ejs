@@ -1,0 +1,53 @@
+<script src="js/hello.lohe.he.lo.lo.he.js"></script>
+<% if(typeof lcCart != "undefined"){%>
+<div class="t border-bottom">Giỏ hàng của bạn</div>
+<ul class="container">
+    <% var tong = 0;
+            lcCart.forEach(function(c){ tong += c.price * c.quantity%>
+    <li>
+        <div class="row my-3">
+            <div class="col-4">
+                <a href="">
+                    <img src="images/Uploads/<%=c.image%>" alt="" width="80">
+                </a>
+            </div>
+            <div class="col-7">
+                <a href="" class="text-decoration-none">
+                    <div class="name"> <%=c.name%></div>
+                </a>
+                <div class="price">Đơn giá:
+                    <%=c.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫</div>
+                <div class="quantity">Số lượng: <%=c.quantity%></div>
+            </div>
+            <div class="col-1 p-0 m-0">
+                <a href="" data-toggle="tooltip" data-placement="right" class="cart-del" data-id="<%= c.id%>"
+                    title="Xóa khỏi giỏ hàng">
+                    <i class="fas fa-times-circle"></i>
+                </a>
+            </div>
+        </div>
+    </li>
+    <%})%>
+
+    <div class=" row mb-3 mt-2">
+        <div class="col-7">
+            Tổng: <strong class="float-right" style="color:#ee4d2d">
+                <%= (''+tong).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>₫</strong>
+        </div>
+        <div class="col-5">
+            <div class="m-0 px-2 btn btn-primary btn-sm float-right">
+                <a href="cart/checkout" class="text-white text-decoration-none">
+                    Thanh toán</a>
+            </div>
+        </div>
+    </div>
+</ul>
+
+<%}else{%>
+
+<div class="t">
+    <img src="images/null.png" alt="Trống" width="100">
+    <div class="pb-5 font-weight-bold" style="opacity: .6;">Giỏ hàng của bạn trống
+    </div>
+</div>
+<%}%>

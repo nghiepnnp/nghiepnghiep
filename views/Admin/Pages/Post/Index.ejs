@@ -1,0 +1,107 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <%= title%>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Post</a></li>
+                    <li class="breadcrumb-item active">Danh sách</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <!--Content-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <%- include("../../Partials/Flash") %>
+                    </div>
+                    <div class="col-6">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                <a href="admin/post/add" class="text-white"><i class="fas fa-plus fa-xs"></i>&nbsp; Thêm mới</a> 
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <a href="admin/post/trash" class="text-white"><i class="far fa-trash-alt fa-xs"></i>&nbsp; Thùng rác</a> 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <script href="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+                <table id="cate1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center no-sort" style="width:3rem;">ID</th>
+                            <th class="text-center"> Tiêu đề </th>
+                            <th class="no-sort text-center">Image</th>
+                            <th class="no-sort text-center">Chủ đề</th>
+                            <th class="no-sort text-center">Ngày tạo</th>
+                            <th class="no-sort text-center" style="width:10rem">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach(function(top){%>
+                            <tr>
+                                <td class="text-center">
+                                    <%= top.ID%>
+                                </td>
+                                <td class="overflow-hidden" style="max-width: 200px;height:80px">
+                                    <a href="admin/post/detail?id=<%= top.ID%>">
+                                        <%= top.Title%>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="">
+                                        <img src="images/Uploads/<%= top.Image%>" alt="<%= top.Image%>" width="70">
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <% topic.forEach(function(topic){ if(top.TopicID == topic.ID){%>
+                                     <%= topic.Name %>
+                                    <%}})%>
+                                </td>
+                                <td>
+                                    <%= format_datetime(top.Created_at) %>
+                                </td>
+                                <td class="text-center">
+                                    <%if(top.Status == 1 ){%>
+                                        <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Trạng thái: Đang hiển thị">
+                                        <a href="admin/post/status?id=<%= top.ID%>" class="text-white"><i class="fas fa-toggle-on"></i></a>
+                                    </button>
+                                        <% }else{%>
+                                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Trạng thái: Không hiển thị">
+                                        <a href="admin/post/status?id=<%= top.ID%>" class="text-white"><i class="fas fa-toggle-off"></i></a>
+                                    </button>
+                                            <%}%>
+
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
+                                    <a href="admin/post/edit?id=<%= top.ID%>" class="text-white"><i class="fas fa-pen"></i></a>
+                                </button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                    <a href="admin/post/deltrash?id=<%= top.ID%>" class="text-white"><i class="far fa-trash-alt"></i></a>
+                                </button>
+                                </td>
+                            </tr>
+                            <%})%>
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</section>

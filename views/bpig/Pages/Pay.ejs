@@ -1,0 +1,109 @@
+<form action="cart/pay" method="POST" onsubmit="return validateForm()">
+    <div style="min-height:535px;" class="bg-light py-3" id="checkout">
+        <div class=" container checkout-cart">
+            <div class="row title mt-3 mb-2">
+                <div class="col-5 pl-5">
+                    &nbsp;&nbsp; &nbsp;Sản phẩm
+                </div>
+                <div class="col-2 text-center">Đơn giá</div>
+                <div class="col-2 text-center">Số lượng</div>
+                <div class="col-2 text-center">Thành tiền</div>
+            </div>
+            <% var tonggiatridonhang = 0;
+            lcCart.forEach(function(c){ tonggiatridonhang+= c.quantity * c.price %>
+            <div class="row content border-right border-bottom border-left">
+                <div class="col-5 pl-5">
+                    <img src="images/Uploads/<%= c.image%>" alt="" width="70">
+                    &nbsp; &nbsp; <%= c.name%>
+                </div>
+                <div class="col-2 text-center"> <%= c.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫</div>
+                <div class="col-2 text-center">
+                    <%= c.quantity%>
+                </div>
+                <div class="col-2 text-center" style="color:#ee4d2d">
+                    <%= (c.price * c.quantity +'').replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫</div>
+            </div>
+            <%})%>
+            <div class="row border bg-white mt-2 py-3">
+                <div class="col-6 profile">Thông tin giao hàng
+                    <hr>
+                    <div class="row">
+                        <div class="col-3 text-right my-3">Họ tên</div>
+                        <div class="col-9 my-2">
+                            <input name="Name" type="text" class="form-control rounded-0"
+                                value="<%= lcAuthUser.Name %>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-right my-3">SĐT</div>
+                        <div class="col-9 my-2">
+                            <input name="Phone" type="number" class="form-control rounded-0"
+                                value="<%= lcAuthUser.Phone %>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-right my-3">Email</div>
+                        <div class="col-9 my-2">
+                            <input id="email" name="Email" type="text" class="form-control rounded-0"
+                                value="<%= lcAuthUser.Email %>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-right my-3">Địa chỉ</div>
+                        <div class="col-9 my-2">
+                            <input id="address" name="Address" type="text" class="form-control rounded-0"
+                                value="<%= lcAuthUser.Address %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class=" text-left">Hoàn tất đơn hàng</div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-8 text-right h6">Đơn hàng</div>
+                        <div class="col-3 text-right font-weight-bold">
+                            <%= (''+tonggiatridonhang).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>₫</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 text-right h6">Phí vận chuyển</div>
+                        <div class="col-3 text-right font-weight-bold">
+                            0₫</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 text-right h6">Mã giảm giá</div>
+                        <div class="col-3 text-right font-weight-bold">
+                            0₫</div>
+                    </div>
+                    <div class="border-top border-bottom py-3">
+                        <div class="row">
+                            <div class="col-8 text-right h6">Tổng cộng</div>
+                            <div class="col-3 text-right font-weight-bold">
+                                <%= (''+tonggiatridonhang).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>₫
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-3">
+                        <div class="col-6"></div>
+                        <div class="col-6">
+                            <div class="text-right">
+                                <%if(lcIsAuthenticated){%>
+                                <button type="submit" style="width:100%; height:49px;border:0; background:-webkit-linear-gradient(top,#f59000,#fd6e1d);
+                color:#fff; font-size:14px">Đặt hàng
+                                </button>
+                                <%}else{%>
+                                <button id="thanh-toan" type="submit" style="width:100%; height:49px;border:0; background:-webkit-linear-gradient(top,#f59000,#fd6e1d);
+                color:#fff; font-size:14px">Đặt hàng
+                                </button>
+                                <%}%>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<%- include('../Partials/Popu.ejs') %>

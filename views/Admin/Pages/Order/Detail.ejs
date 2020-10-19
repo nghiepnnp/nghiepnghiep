@@ -1,0 +1,80 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <%= title %>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Order</a></li>
+                    <li class="breadcrumb-item active">Danh sách</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <table class="table border">
+            <thead>
+                <tr>
+                    <th>Địa chỉ nhận hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Họ tên KH: <b> <%=results[0].Name %></b></td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại: <b> <%=results[0].Phone %></b></td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ: <b> <%=results[0].Address %></b></td>
+                </tr>
+                <tr>
+                    <td>Email: <b> <%=results[0].Email %></b></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table border">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th class="text-center">Số lượng</th>
+                    <th>Tổng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let Tong = 0;results.forEach(function(o){ Tong += parseInt(o.Total)%>
+                <tr>
+                    <%ifp.forEach(function(p){ if(p.ID == o.ProductID){%>
+                    <td> <img src="images/Uploads/<%= p.Image%>" alt="<%= p.Image%>" width="70"><%= p.Name%></td>
+                    <%}})%>
+                    <td> <%= o.Price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>đ</td>
+                    <td class="text-center">x <%= o.Quantity%></td>
+                    <td> <%= o.Total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>đ </td>
+                </tr>
+                <%})%>
+                <tr class="border-top">
+                    <td class="text-right" colspan="3"> Thành tiền</td>
+                    <td> <%= (""+Tong).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%> đ </td>
+                </tr>
+                <tr>
+                    <td class="text-right" colspan="3"> Phí vận chuyển</td>
+                    <td> 0đ </td>
+                </tr>
+                <tr>
+                    <td class="text-right" colspan="3"> Tổng cộng </td>
+                    <td> <%= (""+Tong).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%> đ </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- /.card -->
+    </div>
+</section>

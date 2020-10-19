@@ -1,0 +1,174 @@
+<form action="POST">
+    <div style="background:#f5f5f5; min-height:32rem">
+        <div class="container-91 mx-auto">
+            <div class="row">
+                <div class="col-3 mt-5">
+                    <div class="">
+                        <div class="float-left"><img src="images/boxed-bg.png" ralt="" width="50"
+                                class="rounded-circle">
+                        </div>
+                        <div class="float-left pl-3 border-bottom">
+                            <small class="font-weight-bold"> <%= lcAuthUser.Name %></small><br>
+                            <small class="text-secondary"> <i class="fas fa-pen fa-sm"></i> Sửa hồ sơ</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="clear:both"></div>
+                    <div class="mt-4 pl-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link  text-secondary" href="account/profile" style="font-size: 14px;"><i
+                                        class="far fa-id-card"></i> Thông tin tài khoản</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  text-secondary" href="account/profile" style="font-size: 14px;"><i
+                                        class="far fa-id-card"></i> Sửa thông tin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="account/order" style="font-size: 14px;"><i
+                                        class="far fa-file-alt"></i>
+                                    &nbsp Đơn mua</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="account/notification" style="font-size: 14px;"><i
+                                        class="far fa-bell"></i>&nbsp
+                                    Thông báo</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-secondary" href="javascript:void(0)" style="font-size: 14px;"><i
+                                        class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-9 bg- mt-3" style="width:50rem; margin-left:-50px">
+
+                    <div class="my-2" style="background-color: white;">
+                        <div class="row border-bottom mx-2 mb-3">
+                            <div class="col-6">
+                                <a href="javascript:void(0)" onClick="history.go(-1)">
+                                    <small class="text-secondary d-inline-block pt-3 pl-3">& Trở lại</small>
+                                </a>
+                            </div>
+                            <div class="col-6 text-right  my-2 pt-2 ">
+                                <small class="d-inline text-secondary">ID ĐƠN HÀNG: #<%= OD[0].IDO + '' +OD[0].PID %>
+                                    |</small>
+                                <div class="d-inline pr-3 text-uppercase" style="color:#ee4d2d">
+                                    <% switch (OD[0].Status) { case 1: %>
+                                        Chờ xử lý
+                                         <% break; case 2: %>
+                                       Đang giao hàng
+                                         <% break; case 3: %>
+                                      Đã giao hàng
+                                         <% break; case 4: %>
+                                      Đã hủy đơn hàng
+                                         <% break; } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mx-3 py-3">
+                                <div class="h5">Thông tin nhận hàng</div>
+                                <small class="d-block my-1"><%= OD[0].NameOrder %></small>
+                                <small class="d-block text-secondary my-1"><%= OD[0].Phone %></small>
+                                <small class="d-block text-secondary my-1"><%= OD[0].Email %></small>
+                                <small class="d-block text-secondary my-1"><%= OD[0].Address %></small>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3 border" style="background-color: #fafafa;">
+                            <% let Tong = 0;OD.forEach(function(c){ Tong+=parseInt(c.Total)%>
+                            <div class="row py-5 border-bottom mx-1">
+                                <div class="col-3">
+                                    <img class="d-block mx-auto" src="images/Uploads/<%=c.Image %>" width="100">
+                                </div>
+                                <div class="col-7">
+                                    <div class="card-body my-0">
+                                        <div class="card-text text-dark">
+                                            <a href="" class="text-decoration-none text-dark">
+                                                <%= c.ProductName %>
+                                            </a>
+                                        </div>
+                                        <small class="text-dark">X <%= c.Quantity %></small>
+                                        <p class="card-text"><small class="text-muted"></small>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-2 mt-5">
+                                    <small class="text-dark">
+                                        <%= c.Total.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫ %>
+                                    </small>
+                                </div>
+                            </div>
+                            <%})%>
+                            <div class="row my-3">
+                                <div class="col-12 my-2">
+                                    <div class="row mx-0">
+                                        <div class="col-9 border border-left-0">
+                                            <small class="text-secondary text-right d-block py-3"> Tổng tiền
+                                                hàng</small>
+                                        </div>
+                                        <div class="col-3 border border-left-0 border-right-0 py-3">
+                                            <small class="text-dark text-right d-block pr-5">
+                                                <%= ("0").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫ %>
+                                            </small>
+                                        </div>
+                                        <!---->
+                                        <div class="col-9 border border-left-0 border-top-0">
+                                            <small class="text-secondary text-right d-block py-3">Phí vận chuyển</small>
+                                        </div>
+                                        <div class="col-3 border border-left-0 border-right-0 border-top-0 py-3">
+                                            <small class="text-dark text-right d-block pr-5">
+                                                <%= ("0").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫ %>
+                                            </small>
+                                        </div>
+                                        <!---->
+                                        <div class="col-9 border border-left-0 border-top-0">
+                                            <small class="text-secondary text-right d-block py-3"> Tổng số tiền</small>
+                                        </div>
+                                        <div class="col-3 border border-left-0 border-right-0 border-top-0 py-3">
+                                            <small class="text-right d-block pr-5 h4" style="color:#ee4d2d">
+                                                <%= (''+Tong).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫ %>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <small class='text-secondary pl-3'>Chưa đánh giá</small>
+                                </div>
+                                <div class="col-7 pt-2 pb-3">
+                                    <small class="text-right mr-3 d-block">
+                                        Thanh toán khi nhận hàng
+                                    </small>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+<style>
+    #listtab-order .active {
+        border-bottom: 3px solid #ee4d2d;
+        background: #fff;
+        color: #ee4d2d;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .list-group-item {
+        border-bottom: 1px solid #eee;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+</style>

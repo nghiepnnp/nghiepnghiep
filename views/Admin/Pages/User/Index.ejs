@@ -1,0 +1,117 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <%= title %>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">User</a></li>
+                    <li class="breadcrumb-item active">Danh sách</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <!--Content-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <%- include("../../Partials/Flash") %>
+                    </div>
+                    <div class="col-6">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                <a href="Admin/Category/Add" class="text-white"><i class="fas fa-plus fa-xs"></i>&nbsp;
+                                    Thêm mới</a>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <a href="Admin/Category/Trash" class="text-white"><i
+                                        class="far fa-trash-alt fa-xs"></i>&nbsp; Thùng rác</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <script href="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+                <table id="cate1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center no-sort" style="width:3rem;">ID</th>
+                            <!-- <th class="text-center"></th> -->
+                            <th class="text-center">Customer Name</th>
+                            <th class="text-center"> Email</th>
+                            <th class="text-center"> Phone</th>
+                            <th class="text-center">Access </th>
+                            <th class="no-sort text-center" style="width:10rem">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach(function(cat){%>
+                        <tr>
+                            <td class="text-center">
+                                <%= cat.ID%>
+                            </td>
+                            <!-- <td class="text-center">
+                                <img src="images/boxed-bg.png" alt="Avatar" width="40">
+                            </td> -->
+                            <td   class="">
+                                <a href="javascript:void(0)">
+                                    <%= cat.LastName +" "+ cat.Name%>
+                                </a>
+                            </td>
+                            <td  >
+                                <a href="javascript:void(0)">
+                                <span class="d-inline-block text-truncate" style="max-width:9rem ;">
+                                    <%if (cat.Email == '' || cat.Email ==null){%>
+                                    <div class="text-danger"> Chưa cập nhật</div>
+                                    <%}else{%>
+                                    <%= cat.Email %>
+                                    <%}%>
+                                </span>
+                                </a>
+                            </td>
+                            <td   class="text-center">
+                            <a href="javascript:void(0)">
+                                0<%= cat.Phone %>
+                                    </a>
+                            </td>
+                            <td class="text-center"  >
+                                <%if(cat.Access == 0){%>
+                                <div class="text-success"> Khách hàng </div>
+
+                                <%}else{%>
+                                <div class="text-secondary"> Quản trị viên</div>
+                                <%} %>
+
+                            </td>
+                            <td class="text-center"  >
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip"
+                                    data-placement="top" title="Chỉnh sửa">
+                                    <a href="admin/user/edit?id=<%= cat.ID%>" class="text-white"><i
+                                            class="fas fa-pen"></i></a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                    data-placement="top" title="Xóa">
+                                    <a href="admin/user/deltrash?id=<%= cat.ID%>" class="text-white"><i
+                                            class="far fa-trash-alt"></i></a>
+                                </button>
+                            </td>
+                        </tr>
+                        <%})%>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

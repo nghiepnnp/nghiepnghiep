@@ -1,0 +1,148 @@
+<header>
+    <div class="" style="background:rgb(29, 113, 171)">
+        <div class="container-91 text-right">
+            <small>
+                <a href="/gioi-thieu" class="text-white text-decoration-none mr-3">Giới thiệu</a>
+                <a href="/lien-he" class="text-white text-decoration-none mr-3">Liên hệ</a>
+                <a href="/san-pham" class="text-white text-decoration-none">Sản phẩm</a>
+            </small>
+        </div>
+    </div>
+    <div class="wrapt">
+        <div class="row container-91">
+            <div class="col-sm-3 text-light float-left"> <a href="/"
+                    class="d-block text-decoration-none h3 text-center pt-3 text-white font-weight-bold">
+                    PN
+                </a>
+            </div>
+            <div class="col-sm-5 float-left">
+                <form class="form-search-top" method="get" action="search">
+                    <input class="in-search text-secondary" type="text" placeholder="Nhập tên sản phẩm..."
+                        style="font-size: 14px;" name="key" value="<%if(message.length > 0){%> <%=message%><%}%>">
+                    <!-- <input type="submit" value="Tìm kiếm"> -->
+                 <button class="bt-search" type="submit">
+                        <i class="fas fa-search" style="color:#ccc"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="col-sm-4 float-left pt-1">
+
+                <div class="cart float-left pr-2" style="margin-top:-6px;margin-left:-20px;">
+                    <a href="cart/checkout">
+
+                        <button type="button" class="btn btn-cart">
+                            <i class="fas fa-shopping-cart text-light"></i>
+                            <small><span class="badge badge-light slc">
+                                    <% if(typeof lcCart != "undefined"){%>
+                                    <%- lcCart.length%>
+                                    <%}else{%> 0 <%}%>
+                                </span></small>
+                            <div style="font-size:11px; color:#d0efff">Giỏ hàng</div>
+                        </button>
+                    </a>
+                    <div class="list-cart">
+                        <script src="js/hello.lohe.he.lo.lo.he.js"></script>
+                        <% if(typeof lcCart != "undefined"){%>
+                                    <div class="t border-bottom">Giỏ hàng của bạn
+            </div>
+            <ul class="container">
+                <% var tong = 0;lcCart.forEach(function(c){ tong += c.price * c.quantity%>
+                <li>
+                    <div class="row my-3">
+                        <div class="col-4">
+                            <a href="">
+                                <img src="images/Uploads/<%=c.image%>" alt="" width="80">
+                            </a>
+                        </div>
+                        <div class="col-7">
+                            <a href="" class="text-decoration-none">
+                                <div class="name"> <%=c.name%></div>
+                            </a>
+                            <div class="price">Đơn giá:
+                                <%=c.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫</div>
+                            <div class="quantity">Số lượng: <%=c.quantity%></div>
+                        </div>
+                        <div class="col-1 p-0 m-0">
+                            <a href="" data-toggle="tooltip" data-placement="right" class="cart-del"
+                                data-id="<%= c.id%>" title="Xóa khỏi giỏ hàng"><i class="fas fa-times-circle"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <%})%>
+
+                <div class=" row mb-3 mt-2">
+                    <div class="col-7">
+                        Tổng: <strong class="float-right" style="color:#ee4d2d">
+                            <%= (''+tong).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>₫</strong>
+                    </div>
+                    <div class="col-5">
+                        <div class="m-0 px-2 btn btn-primary btn-sm float-right">
+                            <a href="cart/checkout" class="text-white text-decoration-none">
+                                Thanh toán</a>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+
+            <%}else{%>
+
+            <div class="t">
+                <img src="images/null.png" alt="Trống" width="100">
+                <div class="pb-5 font-weight-bold" style="opacity: .6;">Giỏ hàng của bạn trống
+                </div>
+            </div>
+            <%}%>
+                    </div>
+                </div>
+                <div class="ml-3 float-left">
+                    <a href="tin-tuc" class="text-white font-weight-bold text-decoration-none">Tin tức</a>
+                    <div style="font-size:13px; color:#d0efff">Tin khuyến mại</div>
+                </div>
+                <div class="pl-5 float-left">
+                    <%- include('../Partials/Login') %>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="wrapb">
+        <div class="container-91">
+            <div class="cate float-left p-0">
+                <a href="/" class="pl-4 font-weight-bold">
+                    <i class="fas fa-bars pl-3"></i>&nbsp;
+                    Danh mục
+                </a>
+                <nav class="main-menu">
+                    <ul>
+                        <% var i = 1;categories.forEach(function(c){ %>
+                        <% if(c.ParentID == 0){ %>
+                        <li>
+                            <a href="<%=c.Slug %>"> <i class="icon-<%= i++;%>"></i> &nbsp;
+                                <%= c.Name %>
+                            </a>
+                            <ul>
+                                <% categories.forEach(function(d){ %>
+                                <% if(d.ParentID == c.ID){ %>
+                                <li>
+                                    <a href="<%=d.Slug %>">
+                                        <%= d.Name %>
+                                    </a>
+                                </li>
+                                <% }}); %>
+                            </ul>
+                        </li>
+                        <% }}); %>
+                    </ul>
+                </nav>
+            </div>
+            <div class="">
+                <div class="promo float-left"> <a href="" class="text-dark text-decoration-none">Tivi Online giảm đến
+                        39%</a> </div>
+                <div class="promo float-left"> <a href="" class="text-dark text-decoration-none">Tivi Online giảm</a>
+                </div>
+                <div class="promo float-left"> <a href="" class="text-dark text-decoration-none">Tivi Online giảmTivi
+                        Online giảm</a> </div>
+            </div>
+
+        </div>
+    </div>
+</header>

@@ -1,0 +1,53 @@
+<div class="home-slider bg-" style="background:#f3f3f3">
+    <div class="row clearfix container-91">
+        <div class="col-sm-3 p-0 m-0">
+            <!--Danh mục sản phẩm-->
+            <nav class="main-menu">
+                <ul>
+                    <% var i = 1;categories.forEach(function(c){ %>
+                    <% if(c.ParentID == 0){ %>
+                    <li>
+                        <a href="<%=c.Slug %>"> <i class="icon-<%= i++;%>"></i> &nbsp;
+                            <%= c.Name %>
+                        </a>
+                        <ul>
+                            <% categories.forEach(function(d){ %>
+                            <% if(d.ParentID == c.ID){ %>
+                            <li>
+                                <a href="<%=d.Slug %>">
+                                    <%= d.Name %>
+                                </a>
+                            </li>
+                            <% }}); %>
+                        </ul>
+                    </li>
+                    <% }}); %>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-sm-7 slider">
+            <%- include('../partials/SlideShow')  %>
+        </div>
+        <div class="col-sm-2">
+            <div class="exp-news">
+                <div class="title text-primary font-weight-bold"> <a href="/tin-tuc" class="text-decoration-none"> KINH
+                        NGHIỆM HAY - VIDEO <i class="fas fa-caret-right"></i></a></div>
+                <div class="des-exp "><a href="#" class="text-dark text-decoration-none"> 5 mẫu nồi cơm điện thiết kế
+                        xinh xẻo, lạ mắt cho că bếp, giá chỉ
+                        vài...</a></div>
+                <div class="des-exp"><a href="#" class="text-dark text-decoration-none"> 5 mẫu nồi cơm điện thiết kế
+                        xinh xẻo, lạ mắt cho că bếp, giá chỉ
+                        vài...</a></div>
+                <div class="my-1 pl-2">
+                    <a href="" class="my-5"><img src="images/sliders/eshop_260x64-260x64-1.jpg" alt=""></a>
+                </div>
+                <div class="my-1 pl-2">
+                    <a href="" class="my-5"><img src="images/sliders/eshop_260x64-260x64-1.jpg" alt=""></a>
+                </div>
+                <div class="my-1 pl-2">
+                    <a href="" class="my-5"><img src="images/sliders/eshop_260x64-260x64-1.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

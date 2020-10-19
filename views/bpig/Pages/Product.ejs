@@ -1,0 +1,188 @@
+<div class="" style="background:#f3f3f3">
+    <div class="breadcrumb-c clearfix d-block pl-2">
+        <ul class="container-91">
+            <li><a href="~/">Trang chủ </a></li>
+            <li class="dsfsd"><a href="~/@ViewBag.Slug"> <%= LayTenDanhMuc[0].Name%></a></li>
+        </ul>
+    </div>
+
+    <div class="container-91 py-1" style="background: #f3f3f3">
+        <div class="row">
+            <div class="col-3 w-100">
+                <style>
+                    .dfs {
+                        color: #4a90e2;
+                        font-size: 15px;
+                    }
+                </style>
+
+                <div id="accordion">
+
+                    <div class="btn w-100 h-100 bg-white text-left pl-2 py-2 font-weight-bold pt-2 rounded-0"
+                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne" style="font-size:13px;color:#333">
+                        DANH MỤC <i class="fa fa-plus fa-sm float-right pr-3 pt-1" style="font-size:10px"></i>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show bg-white pb-2" data-parent="#accordion">
+                        <% catCha.forEach(function(c){%>
+                        <a href="<%= c.Slug%>" class="text-decoration-none d-block ml-3 mb-1">
+                            <% if(URL == c.Slug){%>
+                            <i class="check-cat"></i>
+                            <div class="font-weight-bold dfs d-inline" style="color:#000"> <%= c.Name%></div>
+                            <%}else{%>
+                            <i class="ucheck-cat"></i>
+                            <div class="dfs  d-inline"> <%= c.Name%></div>
+                            <%} %>
+                        </a>
+                        <%})%>
+                    </div>
+
+                </div>
+                <div id="accordion" class="border-top border-light">
+
+                    <div class="btn w-100 h-100 bg-white text-left pl-2 py-2 font-weight-bold pt-2 rounded-0"
+                        data-toggle="collapse" data-target="#price" aria-expanded="true" aria-controls="collapseOne"
+                        style="font-size:13px;color:#333">
+                        GIÁ BÁN <i class="fa fa-plus fa-sm float-right pr-3 pt-1" style="font-size:10px"></i>
+                    </div>
+
+                    <div id="price" class="collapse bg-white pb-2" data-parent="#price">
+                        <div class="row">
+                            <div class="col-6 p-0 pl-2">
+                                <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                                    <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                                    <small class="">Dưới <b>5</b> triệu</small>
+                                </a>
+                            </div>
+                            <div class="col-6 p-0">
+                                <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                                    <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                                    <small class="">Từ <b>5 - 7</b> triệu</small>
+                                </a>
+                            </div>
+                            <div class="col-6 p-0 pl-2">
+                                <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                                    <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                                    <small class="">Từ <b>7 - 10</b> triệu</small>
+                                </a>
+                            </div>
+                            <div class="col-6 p-0">
+                                <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                                    <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                                    <small class="">Từ <b>12 - 15</b> triệu</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="accordion" class="border-top border-light">
+
+                    <div class="btn w-100 h-100 bg-white text-left pl-2 py-2 font-weight-bold pt-2 rounded-0"
+                        data-toggle="collapse" data-target="#price1" aria-expanded="true" aria-controls="collapseOne"
+                        style="font-size:13px;color:#333">
+                        KIỂU DÁNG <i class="fa fa-plus fa-sm float-right pr-3 pt-1" style="font-size:10px"></i>
+                    </div>
+                    <div id="price1" class="collapse bg-white pb-2" data-parent="#price1">
+
+                        <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                            <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                            <small class="">Máy lạnh tủ đứng</small>
+                        </a>
+                        <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                            <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                            <small class="">Máy lạnh treo tường</small>
+                        </a>
+                    </div>
+                </div>
+                <div id="accordion" class="border-top border-light">
+
+                    <div class="btn w-100 h-100 bg-white text-left pl-2 py-2 font-weight-bold pt-2 rounded-0"
+                        data-toggle="collapse" data-target="#price2" aria-expanded="true" aria-controls="collapseOne"
+                        style="font-size:13px;color:#333">
+                        TIỆN ÍCH <i class="fa fa-plus fa-sm float-right pr-3 pt-1" style="font-size:10px"></i>
+                    </div>
+
+                    <div id="price2" class="collapse bg-white pb-2" data-parent="#price2">
+                        <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                            <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                            <small class="">Hoạt động siêu êm</small>
+                        </a>
+                        <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                            <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                            <small class="">Điều khiển bằng điện thoại</small>
+                        </a>
+                        <a href="" class="text-decoration-none d-block ml-3 mb-1">
+                            <i class="far fa-circle text-white border  rounded-circle fa-sm"></i>
+                            <small class="">Hẹn giờ bật tắt máy</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9" style="margin-left:-20px; margin-right:20px;">
+                <div class="text-left pl-3 py-3 border bg-white rounded-top">
+                    <div class="h5 font-weight-bold d-inline">Tất cả sản phẩm </div>
+                    <div class="d-inline text-secondary">(<%= result.length %> sản phẩm)</div>
+                </div>
+                <div class="mt-1 pl-3 py- border border-bottom-0 bg-white rounded-top">
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-2">
+                            <select class="form-control form-control-sm my-2" style="height:27px;font-size:12px;">
+                                <option>Bán chạy nhất</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <div class="text-right">
+                                <button class="btn grid"><i class="grid-icon-active i"></i> </button>
+                                <button class="btn list"><i class="list-icon i"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-category border border-right-0 border">
+                    <%if(result.length == 0){%>
+                    <div class="text-center text-danger mt-5"> Danh mục chưa có sản phẩm</div>
+                    <%}else{%>
+                    <% result.forEach(function(c){%>
+                        <div class="nghiep-item item border-right border-bottom">
+                            <a href="<%= c.Slug%>">
+                                <div class="t-img">
+                                    <img src="images/Uploads/<%= c.Image%>" alt="" class="beau">
+                                    <div class="anw">Trả góp <span class="font-weight-bold">0%</span></div>
+                                </div>
+                                <div class="g">
+                                    <div class="couple">
+                                        <div class="anw">Trả góp <span class="font-weight-bold">0%</span></div>
+                                        <div class="giam">Giảm 200,000đ</div>
+                                        <img src="images/online-giảm-sốc-1x.png" class="h-100" />
+                                    </div>
+                                    <div class="t-np">
+                                        <%= c.Name %>
+                                    </div>
+                                    <div class="t-price">
+                                        <div class="price">
+                                            <%= c.PromotionPrice.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>
+                                        </div>
+                                        <div class="old-price float-left">
+                                            <%= c.Price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>
+                                        </div>
+                                        <small class="khongbietdattenlagi float-left text-danger">&nbsp; (<%=(((c.Price-c.PromotionPrice)/c.Price)*100).toFixed(0)   %>%)</small>
+                                    </div>
+                                    <img src="images/online-giảm-sốc-1x.png" class="onlinegiamsoc" />
+                                </div>
+                            </a>
+                        </div>
+                    <%})%>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+</div>

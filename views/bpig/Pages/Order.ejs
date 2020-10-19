@@ -1,0 +1,182 @@
+<form action="POST">
+    <div style="background:#f5f5f5; min-height:32rem">
+        <div class="container-91 mx-auto">
+            <div class="row">
+                <div class="col-3 mt-5">
+                    <div class="">
+                        <div class="float-left"><img src="images/boxed-bg.png" ralt="" width="50"
+                                class="rounded-circle">
+                        </div>
+                        <div class="float-left pl-3 border-bottom">
+                            <small class="font-weight-bold"> <%= lcAuthUser.Name %></small><br>
+                            <small class="text-secondary"> <i class="fas fa-pen fa-sm"></i> Sửa hồ sơ</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="clear:both"></div>
+                    <div class="mt-4 pl-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link  text-secondary" href="account/profile" style="font-size: 14px;"><i
+                                        class="far fa-id-card"></i> Thông tin tài khoản</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  text-secondary" href="account/profile" style="font-size: 14px;"><i
+                                        class="far fa-id-card"></i> Sửa thông tin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="account/order" style="font-size: 14px;"><i
+                                        class="far fa-file-alt"></i>
+                                    &nbsp Đơn mua</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="account/notification" style="font-size: 14px;"><i
+                                        class="far fa-bell"></i>&nbsp
+                                    Thông báo</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-secondary" href="javascript:void(0)" style="font-size: 14px;"><i
+                                        class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-9 bg- mt-3" style="width:50rem; margin-left:-50px">
+                    <%if(message.length > 0){%>
+                    <div class="alert alert-success alert-dismissible fade show my-2" role="alert">
+                        Order success!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <%}%>
+
+                    <div class="list-group flex-sm-row" id="listtab-order" role="tablist">
+                        <li class="text-center list-group-item list-group-item-action active" data-toggle="list"
+                            href="#home" role="tab">Tất cả</li>
+
+                        <li class="text-center list-group-item list-group-item-action" data-toggle="list"
+                            href="#profile" role="tab">Đang giao</li>
+                        <li class="text-center list-group-item list-group-item-action" data-toggle="list"
+                            href="#messages" role="tab">Đã giao</li>
+                        <li class="text-center list-group-item list-group-item-action" data-toggle="list"
+                            href="#settings" role="tab">Đã hủy</li>
+                    </div>
+
+                    <div class="tab-content flex-sm-row mt-2">
+                        <li class="tab-pane active" id="home" role="tabpanel">
+                            <% userOrders.forEach(function(c){%>
+                    <div class="my-2" style="background-color: white;">
+                        <div class="row">
+                            <div class="col-6">
+                                <small class="text-secondary d-inline-block pt-3 pl-3">Sản phẩm</small>
+                            </div>
+                            <div class="col-6 text-right  my-2 pt-2 ">
+                                <small class="d-inline text-secondary">Trạng thái |</small>
+                                <div class="d-inline pr-3 text-uppercase" style="color:#ee4d2d">
+                                    <% switch (c.Status) { case 1: %>
+                                       Chờ xử lý
+                                        <% break; case 2: %>
+                                      Đang giao hàng
+                                        <% break; case 3: %>
+                                     Đã giao hàng
+                                        <% break; case 4: %>
+                                     Đã hủy đơn hàng
+                                        <% break; } %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3 border-left-0 border-right-0 border-bottom-0 mx-3">
+                            <% let Tong = 0; idOrder.forEach(function(io){
+                                    if(c.ID == io.OrderID){ %>
+                            <% Product.forEach(function(p){
+                                    if( p.ID == io.ProductID){
+                                        Tong +=  parseInt(io.Total)%>
+                            <div class="row my-3 pb-3 border-bottom mx-2">
+                                <div class="col-3">
+                                    <img class="d-block mx-auto" src="images/Uploads/<%= p.Image %>" width="100">
+                                </div>
+                                <div class="col-7">
+                                    <div class="card-body my-0">
+                                        <div class="card-text text-dark">
+                                            <a href="<%= p.Slug %>" class="text-decoration-none text-dark">
+                                                <%= p.Name %>
+                                            </a>
+                                        </div>
+                                        <small class="text-dark">X <%= io.Quantity %></small>
+                                        <p class="card-text"><small class="text-muted">_</small>
+                                        </p>
+                                    </div>
+                                </div>
+                                <%}})%>
+                                <div class="col-2 mt-3">
+                                    <small class="text-dark">
+                                        <%= io.Price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫ %>
+                                    </small>
+                                </div>
+                            </div>
+                            <%}})%>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 my-2">
+                                <div class="text-right pr-5">
+                                    <h6 class="d-inline text-dark">Tổng số tiền: </h6>
+                                    <h3 class="d-inline" style="color:#ee4d2d">
+                                        <%= (''+Tong).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫ %></h3>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <small class='text-secondary pl-3'>Không nhân được đánh giá</small>
+                            </div>
+                            <div class="col-7 pt-2 pb-3">
+                                <div class="text-right mr-3">
+                                    <button style="background:#ee4d2d" class="btn rounded-0 px-5 py-2">
+                                        <a href="javácript:void(0)" class="text-white text-decoration-none"><small>Đánh
+                                                giá
+                                            </small>
+                                        </a>
+                                    </button>
+                                    <button style="border:1px solid #ccc" class="btn rounded-0 py-2 ml-2">
+                                        <small>
+                                            <a href="account/don-hang/chi-tiet?id=<%=c.ID%>"
+                                                class="text-dark text-decoration-none py-3 px-5"> Chi tiết đơn
+                                                hàng
+                                            </a>
+                                        </small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%})%>
+                    </li>
+                    <li class="tab-pane" id="profile" role="tabpanel">...</li>
+                    <li class="tab-pane" id="messages" role="tabpanel">...</li>
+                    <li class="tab-pane" id="settings" role="tabpanel">...</li>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+</form>
+<style>
+    #listtab-order .active {
+        border-bottom: 3px solid #ee4d2d;
+        background: #fff;
+        color: #ee4d2d;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .list-group-item {
+        border-bottom: 1px solid #eee;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+</style>

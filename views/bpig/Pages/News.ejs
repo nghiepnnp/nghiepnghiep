@@ -1,0 +1,97 @@
+<div class="breadcrumb-c clearfix">
+    <ul class="container-91">
+        <li><a href="">Trang chủ</a></li>
+
+       
+    </ul>
+</div>
+<div class="container-91 row tin-tuc">
+    <div class="col-8">
+        <div id="owl-news" class="owl-carousel owl-theme">
+            <% spost.forEach(function(news){%>
+                <div class="item">
+                    <a href="<%= news.Slug%>"><img src="images/Uploads/<%= news.Image%>" alt="" height="450" style="filter: brightness(80%)">
+                        <div class="chu-len-hinh" style="filter: brightness(100%)">
+                            <span class="news-cate">
+                                <%topic.forEach(function(heo){ if(news.TopicID == heo.ID){%>
+                                    <%= heo.Name%>
+                                <%}});%>
+                            
+                            </span> <br><%= news.Title%>
+                            <p class="time">  <%= fTN(news.Created_at)%></p>
+                        </div>
+                    </a>
+                </div>
+                <%});%>
+
+        </div>
+        <div class="tin-desc">
+            <% ppost.forEach(function(p){%>
+                <a href="<%= p.Slug%>">
+                    <div class="row">
+                        <div class="col-4 image"> <img src="images/Uploads/<%= p.Image%>" alt="<%= p.Image%>"></div>
+                        <div class="title-de col-8 clearfix">
+                            <%= p.Title%>
+                                <div class="pt-2">
+                                    <div class="news-cate">
+                                        <%topic.forEach(function(heo){ if(p.TopicID == heo.ID){%>
+                                            <%= heo.Name%>
+                                                <%}});%>
+                                    </div>
+                                    <div class="news-time">
+                                        <%= fTN(p.Created_at)%>
+                                    </div>
+                                </div>
+                                <div class="news-rg">
+                                    <%= p.Title%>
+                                </div>
+
+                        </div>
+                    </div>
+                </a>
+                <%})%>
+
+        </div>
+    </div>
+    <div class="col-4 news-right">
+        <div class="title">
+            KẾT NỐI VỚI CHÚNG TÔI
+        </div>
+        <div style="margin-bottom:50px"></div>
+        <div class="">
+            <div class="title ">
+                BÀI VIẾT MỚI
+            </div>
+            <% ppost.forEach(function(p){%>
+            <div class="mt-3">
+                <a href="<%= p.Slug %>">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="image">
+                                <img src="images/Uploads/<%= p.Image %>" alt="">
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="desc-right">
+                                <div class="cate-left">
+                                    <%= p.Title %>
+                                </div>
+                                <div class="cate float-left mt-1">
+                                    <%topic.forEach(function(heo){ if(p.TopicID == heo.ID){%>
+                                        <%= heo.Name%>
+                                    <%}});%>
+                                </div>
+                                <div class="time float-left mt-1 pl-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <%})%>
+
+           
+
+        </div>
+    </div>
+</div>
+<%- include('../Partials/Popu.ejs')%>

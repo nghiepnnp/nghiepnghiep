@@ -1,0 +1,27 @@
+<div class="news-home" style="background:#f3f3f3">
+    <div class="container-91 title">Có gì mới cho ngày hôm nay ?</div>
+    <div class="container-91 wrap clearfix">
+
+        <div class="bu-left">
+            <iframe width="100%" height="380" src="https://www.youtube.com/embed/jzD_yyEcp0M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="bu-right">
+
+            <% news.forEach(function(c){%>
+            <div class="wrap-card clearfix">
+                <a href="">
+                    <div class="card-img">
+                        <img src="images/Uploads/<%= c.Image%>" alt="Card image cap" width="130">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                           <%=c.Title%>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <%})%>
+        </div>
+
+    </div>
+</div>

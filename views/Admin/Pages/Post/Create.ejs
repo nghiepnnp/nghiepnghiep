@@ -1,0 +1,104 @@
+<form method="POST" action="admin/post/add" enctype="multipart/form-data">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Thêm bài viết</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                        <li class="breadcrumb-item active">Danh sách</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <!--Content-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="col-6">
+                            <%- include("../../Partials/Flash") %>
+                        </h3>
+                        <div class="col-6">
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                   <i class="fas fa-save fa-xs"></i>&nbsp; Save
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="admin/post/" class="text-white"><i class="fas fa-sign-out-alt fa-xs"></i>&nbsp; Exit</a> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label for="">Tiêu đề</label>
+                                <input type="text" class="form-control" placeholder="" name="Title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Mô tả </label>
+                                <textarea class="form-control" name="Description" rows="2"> </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>MetaKey</label>
+                                <textarea class="form-control" name="MetaKey" rows="2"> </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>MetaDesc</label>
+                                <textarea class="form-control" name="MetaDesc" rows="2"></textarea>
+                            </div>
+                            <style>
+
+                            </style>
+                            <div class="form-group">
+                                <label>Chi tiết</label>
+                                <textarea class="textarea" name="Detail"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Chọn hình ảnh</label>
+                                <input type="file" class="form-control-file" name="Image">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Chủ đề</label>
+                                <select class="form-control" name="TopicID">
+                                    <%parent.forEach(function(heo){%>
+                                        <option  value="<%= heo.ID %>"><%= heo.Name %> </option>
+                                    <%})%>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Vị trí hiển thị</label>
+                                <select class="form-control" name="Position">
+                                    <option  value="Mặc định">Mặc định</option>
+                                    <option  value="Slider">Slider</option>
+                                </select>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="inputState">Trạng thái</label>
+                                <select class="form-control" name="Status">
+                                        <option selected value="1">Hiển thị </option>
+                                        <option value="2">Không hiển thị </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

@@ -1,0 +1,21 @@
+<div id="sync1" class="owl-carousel">
+    <% banner.forEach(function(s){%>
+        <div class="item">
+            <a href="">
+                <img src="images/sliders/<%= s.URL %>" alt="">
+            </a>
+        </div>
+        <%});%>
+</div>
+<!-- sua dong 1475 prev next show btn owl.carourel.js-->
+<div id="sync2" class="owl-carousel" >
+    <% banner.forEach(function(s){%>
+        <div class="item">
+            <div>
+                <a href="">
+                    <%= s.Name %>
+                </a>
+            </div>
+        </div>
+        <%});%>
+</div>

@@ -1,0 +1,85 @@
+<form method="POST" action="Admin/Category/Add">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Thêm danh mục sản phẩm</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                        <li class="breadcrumb-item active">Danh sách</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <!--Content-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="col-6">
+                            <%- include("../../Partials/Flash") %>
+                        </h3>
+                        <div class="col-6">
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                   <i class="fas fa-save fa-xs"></i>&nbsp; Save
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="admin/category/" class="text-white"><i class="fas fa-sign-out-alt fa-xs"></i>&nbsp; Exit</a> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label for="">Tên danh mục</label>
+                                <input type="text" class="form-control" placeholder="" name="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>MetaKey</label>
+                                <textarea class="form-control" name="MetaKey" rows="3"> </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>MetaDesc</label>
+                                <textarea class="form-control" name="MetaDesc" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="inputState">Cấp cha</label>
+                                <select class="form-control" name="ParentID">
+                                    <option selected value="0">Cấp cha </option>
+                                    <%parent.forEach(function(heo, index){%>
+                                        <option  value="<%= heo.ID %>"><%= heo.Name %> </option>
+                                    <%})%>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Thứ tự thiển thị</label>
+                                <input type="number" class="form-control" name="Order">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Trạng thái</label>
+                                <select class="form-control" name="Status">
+                                        <option selected value="1">Hiển thị </option>
+                                        <option value="2">Không hiển thị </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

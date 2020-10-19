@@ -1,0 +1,95 @@
+<form method="POST" action="admin/topic/edit?id=<%= result.ID  %>">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <%- title %>></h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Topic</a></li>
+                        <li class="breadcrumb-item active">Danh sách</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <!--Content-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">
+                            <%- include("../../Partials/Flash") %>
+                        </div>
+                        <div class="col-6">
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                   <i class="fas fa-save fa-xs"></i>&nbsp; Save
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <a href="admin/topic" class="text-white"><i class="fas fa-sign-out-alt fa-xs"></i>&nbsp; Exit</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label for="">Tên chủ đề</label>
+                                <input type="text" class="form-control" placeholder="<%= result.Name %>" name="Name" value="<%= result.Name  %>">
+                            </div>
+                            <div class="form-group">
+                                <label>MetaKey</label>
+                                <textarea class="form-control" name="MetaKey" rows="3"><%= result.MetaKey %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>MetaDesc</label>
+                                <textarea class="form-control" name="MetaDesc" rows="3"><%= result.MetaDesc %></textarea>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Parent</label>
+                                <select class="form-control" name="ParentID">
+
+                                        <%if(result.ParentID == 0){%>
+                                            <option selected value="0">Cấp cha</option>
+                                        <%}else{%>
+                                            <option value="0">Cấp cha</option>
+                                        <%}%>
+
+                                        <%parent.forEach(function(heo){%>
+                                            <%if(heo.ID == result.ParentID){%>
+                                                <option selected value="<%= heo.ID%>"><%= heo.Name%> </option>
+                                            <%}else{%>
+                                                <option value="<%= heo.ID%>"><%= heo.Name%> </option>
+                                            <%}%>
+                                        <%})%>
+                                        <!--Nếu nó bằng thì selected còn nếu không thì cứ in ra thôi-->
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Status</label>
+                                <input type="number" class="form-control" name="Orders">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">Status</label>
+                                <select id="inputState" class="form-control" name="Status">
+                                        <option selected value="1">Hiển thị </option>
+                                        <option value="2">Không hiển thị </option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

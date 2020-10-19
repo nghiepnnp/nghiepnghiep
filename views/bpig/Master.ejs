@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/">
+
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/imageSprite.css">
+    <title>
+        <%- title %>
+    </title>
+</head>
+
+<body>
+    <%- include('./partials/Header'); -%>
+    <%if(path.length != 0){%>
+    <%- include('./pages/' + path) -%>
+    <%}else{%>
+    <%- include('./partials/Footer'); -%>
+    <%}%>
+            <%- include('./partials/Footer'); -%>
+    <div id="notif-cart" class="notif-cart">
+        <i class="fas fa-check d-block fa-4x text-success text-center py-2 mt-2"></i>
+        <div class="text-light text-center d-block"> Sản phẩm đã được thêm vào Giỏ hàng</div>
+    </div>
+    <div class="notif-bottom">
+        <i class="fas fa-check text-success fa-1x pr-2"></i>
+        <div class="text-light text-center d-inline"> Đăng ký tài khoản thành công</div>
+    </div>
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/j.js"></script>
+    <script src="js/hello.lohe.he.lo.lo.he.js"></script>
+
+
+</body>
+
+</html>

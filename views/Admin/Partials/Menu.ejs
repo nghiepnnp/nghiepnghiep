@@ -1,0 +1,343 @@
+<a href="index3.html" class="brand-link">
+    <img src="../Admin/images/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">AdminLTE 3</span>
+</a>
+<style>
+    #menu a {
+        color: orangered;
+    }
+</style>
+
+<div class="sidebar">
+    <nav class="mt-2" id="menu">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item has-treeview">
+                <a href="admin" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fas fa-copyright nav-icon"></i>
+                    <p>
+                        Loại sản phẩm
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/category" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/category/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/category/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="admin/product" class="nav-link">
+                    <i class="nav-icon fas fa-parking"></i>
+                    <p>
+                        Sản phẩm
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/product" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/product/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/product/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="admin/topic" class="nav-link">
+                    <i class="fab fa-tumblr-square nav-icon"></i>
+                    <p>
+                        Chủ đề bài viết
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/topic" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/topic/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/topic/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-pinterest-square nav-icon"></i>
+                    <p>
+                        Bài viết
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/post" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/post/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/post/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-pinterest-square nav-icon"></i>
+                    <p>
+                       Trang đơn
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/page" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/page/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/page/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-medium nav-icon"></i>
+                    <p>
+                        Menu
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/menu" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/menu/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/menu/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-opera nav-icon"></i>
+                    <p>
+                        Đơn hàng
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/order" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/order/?" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Đơn đã hủy</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="admin/order/?" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-cuttlefish nav-icon"></i>
+                    <p>
+                        Liên hệ
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/contact" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/contact/answered" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Chưa trả lời</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/contact/notansweredyet" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Đã trả lời</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-stripe-s nav-icon"></i>
+                    <p>
+                        Ảnh bìa
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/slider" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/slider/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/slider/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="" class="nav-link">
+                    <i class="fab fa-uniregistry nav-icon"></i>
+                    <p>
+                        Thành viên
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="admin/user" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Danh sách</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/user/add" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thêm mới</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="admin/user/trash" class="nav-link">
+                            <i class="fas fa-angle-right nav-icon"></i>
+                            <p>Thùng rác</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-header">LABELS</li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-circle text-danger"></i>
+                    <p class="text">Personal Information</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-circle text-warning"></i>
+                    <p>Disadvantages</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>Shut up</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

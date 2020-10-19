@@ -1,0 +1,78 @@
+<div style="min-height:535px;" class="bg-light py-3" id="checkout">
+    <%if(typeof lcCart === 'undefined'){%>
+    <div class="container checkout-cart">
+        <div></div>
+        <img src="images/null.png" alt="null" class="d-block m-auto" width="250">
+        <p class="text-center font-weight-bold" style="opacity: .6;">Giỏ hàng của bạn trống</p>
+        <div class="btn rounded-0 m-auto d-block" style="width:200px; background:#ee4d2d">
+            <a href="/" class="text-light text-decoration-none">MUA NGAY</a>
+        </div>
+    </div>
+    <%}else{%>
+    <div class=" container checkout-cart">
+        <div class="row">
+            <div class="col-12 my-cart pl-5"><i class="fas fa-carrot text-success pr-2"></i> Giỏ hàng của bạn</div>
+        </div>
+        <div class="row title mt-3 mb-2">
+            <div class="col-5 pl-5">
+                <input class="form-check-input" type="checkbox" style="position: relative;">
+                &nbsp;&nbsp; &nbsp;Sản phẩm
+            </div>
+            <div class="col-2 text-center">Đơn giá</div>
+            <div class="col-2 text-center">Số lượng</div>
+            <div class="col-2 text-center">Thành tiền</div>
+            <div class="col-1 text-center">Thao tác</div>
+        </div>
+        <% var tonggiatridonhang = 0;
+            lcCart.forEach(function(c){ tonggiatridonhang+= c.quantity * c.price %>
+        <div class="row content border-right border-bottom border-left">
+            <div class="col-5 pl-5">
+                <input class="form-check-input" type="checkbox" style="position: relative;">&nbsp;&nbsp; &nbsp;
+                <img src="images/Uploads/<%= c.image%>" alt="" width="70">
+                &nbsp; &nbsp; <%= c.name%>
+            </div>
+            <div class="col-2 text-center"> <%= c.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫</div>
+            <div class="col-2 text-center">
+                <div class="btn rounded-0 dout" data-id="<%= c.id %>">-</div>
+                <input type="number" style="width:50px; height:34px;margin:-5px;outline:0;border: 0;text-align:center"
+                    class="rounded-0 border valc pl-3 bg-white" value="<%= c.quantity%>" min="1" disabled>
+                <div class="btn rounded-0 douc" data-id="<%= c.id %>">+</div>
+            </div>
+            <div class="col-2 text-center" style="color:#ee4d2d">
+                <%= (c.price * c.quantity +'').replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%>₫</div>
+            <div class="col-1 text-center"> <a href="javascript:void(0)" class="cart-del text-decoration-none"
+                    data-id="<%= c.id%>">Xóa</a>
+            </div>
+        </div>
+        <%})%>
+        <div class="row fb-totalp bg-white container m-auto border fixed-bottom py-3" style="background:#fff">
+            <div class="col-3 pl-5">
+                <input class="form-check-input" type="checkbox" style="position: relative;">
+                &nbsp;&nbsp; &nbsp;Chọn tất cả (<%= lcCart.length %>)
+            </div>
+
+            <div class="col-6 text-center">
+                <div class="float-right"> Tổng tiền hàng (<%= lcCart.length %> sản phẩm): &nbsp;<strong class="d-inline"
+                        style="color:#ee4d2d;font-size: 27px;"><%= (''+tonggiatridonhang).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %>₫</strong>
+                </div>
+            </div>
+            <div class="col-3">
+                <%if(lcIsAuthenticated){%>
+                <div class="btn text-center rounded-0 text-light">
+                    <a href="cart/thanh-toan" class="text-white text-decoration-none"> Thanh toán</a>
+                </div>
+                <%}else{%>
+                <div class="btn text-center rounded-0 text-light">
+                    <a href="javascript:void(0)" class="text-white text-decoration-none" id="thanh-toan"> Thanh toán</a>
+                </div>
+                <%}%>
+            </div>
+        </div>
+        <%}%>
+            </div>
+        </div>
+     
+
+        <script>
+
+        </script>

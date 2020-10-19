@@ -1,0 +1,114 @@
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    <%= title%>
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                    <li class="breadcrumb-item active">Danh sách</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <!--Content-->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        <%- include("../../Partials/Flash") %>
+                    </div>
+                    <div class="col-6">
+                        <div class="float-right">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                <a href="Admin/Category/Add" class="text-white"><i class="fas fa-plus fa-xs"></i>&nbsp;
+                                    Thêm mới</a>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <a href="Admin/Category/Trash" class="text-white"><i
+                                        class="far fa-trash-alt fa-xs"></i>&nbsp; Thùng rác</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <script href="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+                <table id="cate1" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center no-sort" style="width:3rem;">ID</th>
+                            <th class=""> Tên danh mục </th>
+                            <th class="no-sort">Liên kết</th>
+                            <th>Cấp cha</th>
+                            <th class="no-sort">Ngày tạo</th>
+                            <th class="no-sort text-center" style="width:10rem">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach(function(cat){%>
+                        <tr>
+                            <td class="text-center">
+                                <%= cat.ID%>
+                            </td>
+                            <td>
+                                <a href="admin/category/detail?id=<%= cat.ID%>">
+                                    <%= cat.Name%>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="">
+                                    <%= cat.Slug%>
+                                </a>
+                            </td>
+                            <td>
+                                <%= cat.ParentID %>
+                            </td>
+                            <td>
+                                <%= format_datetime(cat.Created_at) %>
+                            </td>
+                            <td class="text-center">
+
+                                <%if(cat.Status == 1 ){%>
+                                <label class="switch">
+                                    <input class="changeStatus" data-id="<%=cat.ID%>" data-controller="Category"
+                                        type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                                <% }else{%>
+                                <label class="switch">
+                                    <input class="changeStatus" data-id="<%=cat.ID%>" data-controller="Category"
+                                        type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                <%}%>
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Chỉnh sửa">
+                                    <a href="admin/category/edit?id=<%= cat.ID%>" class="text-white"><i
+                                    class="fas fa-pen"></i></a>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip"
+                                    data-placement="top" title="Xóa">
+                                    <a href="admin/category/deltrash?id=<%= cat.ID%>" class="text-white"><i
+                                            class="far fa-trash-alt"></i></a>
+                                </button>
+                            </td>
+                        </tr>
+                        <%})%>
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</section>

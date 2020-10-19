@@ -1,0 +1,206 @@
+<div class="breadcrumb-c clearfix">
+    <ul class="container-91">
+        <li><a href="">Home</a></li>
+        <li><a href="">Page</a></li>
+        <li>Detail</li>
+    </ul>
+</div>
+
+<div class="container-91 detail-pt clearfix mt-2">
+
+    <div class="title-top pb-1">
+        <%= result.Name %>
+    </div>
+    <div class="row my-3">
+        <div class="col-5">
+            <a href=""> <img class="img-product mt-5" src="images/Uploads/<%=result.Image%>" alt="" width="90%"></a>
+        </div>
+        <div class="col-4">
+            <div class="bao-gia clearfix">
+                <div class="gia">
+                    <%= result.PromotionPrice.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%> ₫</div>
+                <div class="gia-gach">
+                    <%= result.Price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") %> ₫</div>
+                <div
+                    style="float:left;background:#f28902; margin:0 0 0 15px; border-radius:4px;color:#f3f3f3; font-size:11px;width:70px;padding:0 5px">
+                    Trả góp 0%</div>
+            </div>
+            <div class="row">
+                <%if(result.Price != result.PromotionPrice){%>
+                <div class="col-12 bg-danger rounded-top"
+                    style="background: linear-gradient(to right,#e75a23 0,#bf081f 100%);">
+                    <div class="text-light text-center font-weight-bold py-2 mt-2">MUA ONLINE GIẢM SỐC
+                        <strong class="text-warning d-inline-block">
+                            <%= ((parseInt(result.Price)-parseInt(result.PromotionPrice))/parseInt(result.Price) * 100).toFixed(0) %>%
+                        </strong> CÒN
+                    </div>
+                </div>
+
+                <div class="col-12 rounded-bottom" style="background:#eee">
+                    <div class="text-center font-weight-bold py-2 mt-2 h4" style="color:#bf081f">
+                        <%= result.PromotionPrice.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")%> ₫
+                    </div>
+                </div> <%}%>
+            </div>
+            <div class="row my-2 border">
+                <div class="col-12 bg-light">
+                    <div class="pl-3 font-weight-bold py-2 mt-2 float-left">KHUYẾN MẠI</div> <small class="float-left mt-2 pt-1 pl-2"> (Áp dụng dự kiến đến 30/06/3020)</small>
+                </div>
+                <div class="col-12">
+                   <small class="rounded-circle bg-primary px-1 text-light">1</small> <small class="text-dark"> Tặng 4 tháng tiền điện trị giá 400,000đ (đã trừ vào giá)</small><br>
+                   <small class="rounded-circle bg-primary px-1 text-light">2</small> <small class="text-dark"> Tặng thêm 1 lần vệ sinh miễn phí (trong vòng 1 năm kể từ ngày mua hàng) trị giá 150,000đ</small><br>
+                   <small class="rounded-circle bg-primary px-1 text-light">3</small> <small class="text-dark"> Đổi mới miễn phí trong 1 năm nếu sản phẩm lỗi (Hãng thẩm định lỗi và đổi máy)</small><br>
+                   <small class="rounded-circle bg-primary px-1 text-light">4</small> <small class="text-dark"> Tặng Combo vật tư (Dây điện từ dàn lạnh đến dàn nóng, Simili, miễn phí tối đa 5 mét ống đồng, ống nước) trị giá 650,000đ</small><br>
+                   <small class="rounded-circle bg-primary px-1 text-light">5</small> <small class="text-dark">Miễn phí công lắp đặt</small><br>
+                   <small class="rounded-circle bg-primary px-1 text-light">6</small> <small class="text-dark"> Tặng 2 suất mua Đồng hồ thời trang giảm 40% (không áp dụng thêm khuyến mãi khác)</small><br>
+                </div>
+            </div>
+
+
+
+            <div class="mt-3">
+                <small class="text-secondary d-inline pr-3">Số lượng</small>
+
+                <div class="btn btn-white rounded-0 border tru" onclick="return tru();"
+                style="width:30px; height:30px;margin-top:-2px; line-height:15px;font-weight: bold;">-
+                </div>
+                <input type="text" style="width:50px; height:30px;margin:0 -6px;outline:0;text-align:center"
+                    class="rounded-0 border text-secondary text_view pl-3 border-right-0" value="1" min="1"
+                    id="qtyDpt">
+                <div class="btn btn-white rounded-0 border cong" onclick="return cong();"
+                    style="width:30px; height:30px;margin-top:-2px; line-height:15px;font-weight: bold;">+
+                </div>
+                <small class="text-secondary d-inline ml-4">12 sản phẩm có sẵn</small>
+            </div>
+<div class="row">
+    <div class="col-6">
+        <div class="nut-mua" id="btn-addcart" data-id="<%= result.ID%>">
+                <button style="width:100%; height:49px; border:1px solid #ee4d2d; background:rgba(255,87,34,.15);
+                color:#ee4d2d; font-size:14px"><i class="fas fa-cart-plus"></i> &nbsp Thêm vào giỏ hàng
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <%if(lcIsAuthenticated){%>
+            <div class="nut-mua">
+                <a href="cart/thanh-toan" class="text-decoration-none text-light" data-id="<%= result.ID%>" id="add-one-p-t-c">
+                    <button style="width:100%; height:49px;border:0; background:-webkit-linear-gradient(top,#f59000,#fd6e1d);
+                color:#fff; font-size:14px">
+                        Mua ngay
+                    </button>
+                </a>
+            </div>
+            <%}else{%>
+            <div class="nut-mua" data-id="<%= result.ID%>">
+                <button style="width:100%; height:49px;border:0; background:-webkit-linear-gradient(top,#f59000,#fd6e1d);
+                    color:#fff; font-size:14px" id="thanh-toan">Mua ngay
+                </button>
+            </div>
+            <%}%>
+
+        </div>
+    </div>
+
+</div>
+<div class="col-3">
+    <div class="border mt-4">
+        <div class="text-success font-weight-bold text-center h6 py-2 mt-2">MUA NHƯ VUA - CHĂM SÓC NHƯ V.I.P
+        </div>
+        <small class="text-secondary border-bottom d-block pl-3 py-2 mt-2"><i
+                class="fas fa-cogs fa-2x text-success pr-2"></i> <b class="text-dark"> Miễn phí</b> công lắp
+            đặt</small>
+        <small class="text-secondary border-bottom d-block pl-3 py-2 mt-2"><i
+                class="fas fa-cogs fa-2x text-success pr-2"></i> <b class="text-dark"> Miễn phí</b> công lắp
+            đặt</small>
+        <small class="text-secondary border-bottom d-block pl-3 py-2 mt-2"><i
+                class="fas fa-cogs fa-2x text-success pr-2"></i> <b class="text-dark"> Miễn phí</b> công lắp
+            đặt</small>
+        <small class="text-secondary border-bottom d-block pl-3 py-2 mt-2"><i
+                class="fas fa-cogs fa-2x text-success pr-2"></i> <b class="text-dark"> Miễn phí</b> công lắp
+            đặt</small>
+        <small class="text-secondary border-bottom d-block pl-3 py-2 mt-2"><i
+                class="fas fa-cogs fa-2x text-success pr-2"></i> <b class="text-dark"> Miễn phí</b> công lắp
+            đặt</small>
+        <small class="text-secondary border-bottom d-block pl-3 py-2 mt-2"><i
+                class="fas fa-cogs fa-2x text-success pr-2"></i> <b class="text-dark"> Miễn phí</b> công lắp
+            đặt</small>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="san-pham-cung-loai container-91">
+    <div class="title">Sản phẩm cùng danh mục</div>
+    <div class="taiche">
+        <div id="owl-wrap" class="owl-carousel owl-theme">
+
+            <div class="p-item">
+                <a href="">
+                    <div class="p-img">
+                        <img src="images/products/samsung-ar13tyhycwknsv-550x160.jpg" alt="" class="beau">
+                        <div class="anw">Trả góp <span class="font-weight-bold">0%</span></div>
+                    </div>
+                    <div class="couple">
+                        <img src="images/online-giảm-sốc-1x.png" alt="" class="h-100 ">
+                    </div>
+                    <div class="p-np">
+                        Toshiba Inveter 1HP
+                    </div>
+                    <div class="p-price ">
+                        <div class="price">
+                            8.400.000₫
+                        </div>
+                        <div class="old-price float-left">
+                            7.900.000₫
+                        </div>
+                        <div class="khongbietdattenlagi float-left">(-34%)</div>
+                    </div>
+                </a>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<div class="container-91 row chi-tiet-san-pham">
+    <div class="col-8">
+        <%- result.Content%>
+        </div>
+        <div class="col-4">
+            <div class="title-right">Thông số kỹ thuật</div>
+            <table class="table table-striped">
+                <tr>
+                    <th scope="row">Công suất lạnh</th>
+                    <td>1.5 HP - 12.000 BTU</td>
+                </tr>
+                <tr>
+                    <th scope="row">Loại máy</th>
+                    <td>Điều hoà 1 chiều (chỉ làm lạnh)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Công suất lạnh</th>
+                    <td>1.5 HP - 12.000 BTU</td>
+                </tr>
+                <tr>
+                    <th scope="row">Loại máy</th>
+                    <td>Điều hoà 1 chiều (chỉ làm lạnh)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Công suất lạnh</th>
+                    <td>1.5 HP - 12.000 BTU</td>
+                </tr>
+                <tr>
+                    <th scope="row">Loại máy</th>
+                    <td>Điều hoà 1 chiều (chỉ làm lạnh)</td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+    <%- include('../Partials/Popu.ejs') %>
